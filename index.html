@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Review of probability I</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/solarized.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="mystyle.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="index_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="index_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<section>
+<h1>
+Random variables, distributions, and expectations
+</h1>
+<p>Based on Stock and Watson, ch. 2</p>
+<p><br></p>
+<h2>
+<a href="mailto:jesper.bagger@rhul.ac.uk">Jesper Bagger</a>
+</h2>
+<h3>
+EC2203 | Royal Holloway | 2020/21
+</h3>
+</section>
+</section>
+<section id="outline" class="title-slide slide level1"><h1>Outline</h1><ul>
+<li><p>Random variables</p></li>
+<li><p>Distributions</p></li>
+<li><p>Expectations</p></li>
+</ul></section>
+<section><section id="random-variables" class="title-slide slide level1"><h1>Random variables</h1></section><section id="randomness" class="slide level2">
+<h2>Randomness</h2>
+<!-- *Don’t worry baby. It’s gonna be alright. -->
+<!-- Uncertainty can be a guiding light*---U2, Zentropa -->
+<!-- Think of a random process as experiment: action that produces a definite outcome that cannot be predicted with certainty -->
+<ul>
+<li><p>A random process is a definite outcome that cannot be predicted with certainty</p>
+<ul>
+<li><p>Coin flip</p></li>
+<li><p>Student test scores (for example, your EC2203 mark)</p></li>
+<li><p>Waiting time in the College shop</p></li>
+<li><p>The FTSE100 index</p></li>
+<li><p>Salary in your first job</p></li>
+</ul></li>
+<li><p>We use <strong>random variables</strong> to analyze situations involving randomness</p></li>
+</ul>
+</section><section id="outcomes-sample-space-and-events" class="slide level2">
+<h2>Outcomes, sample space, and events</h2>
+<ul>
+<li><p>Mutually exclusive potential results of a random process are called <strong>outcomes</strong></p></li>
+<li><p>The set of all possible outcomes is called the <strong>sample space</strong>, and is typically denoted <span class="math inline">\(\Omega\)</span></p></li>
+<li><p>An <strong>event</strong> is a subset of the sample space <span class="math inline">\(\Omega\)</span></p></li>
+</ul>
+</section><section id="probability" class="slide level2">
+<h2>Probability</h2>
+<!-- - Add a **probability measure** $P$ to the setup -->
+<ul>
+<li><p>Let <span class="math inline">\(P\)</span> be <strong>probability measure</strong>. <span class="math inline">\(P(E)\)</span> is the <strong>probability</strong> that event <span class="math inline">\(E\)</span> is realized</p></li>
+<li><p>To be a probability measure, <span class="math inline">\(P\)</span> must satisfy the three Axioms of Probability. The axioms implies that <span class="math inline">\(P\)</span> has the intuitive properties that</p>
+<p><span class="math display">\[0 \leq P(E) \leq 1; \quad P(\Omega) = 1\]</span></p></li>
+<li><p><span class="math inline">\(P(E)\)</span> is the <strong>proportion of times <span class="math inline">\(E\)</span> is realized in repeated, independent trials</strong> of the random process.</p></li>
+</ul>
+</section><section id="random-variables-1" class="slide level2">
+<h2>Random variables</h2>
+<ul>
+<li><p><strong>Numerical</strong> summary of a random outcome</p></li>
+<li><p>A random variable <span class="math inline">\(X\)</span> assigns a <strong>real number</strong> to every element in a sample space</p>
+<p><span class="math display">\[X: \Omega \mapsto \mathbb{R}\]</span></p></li>
+</ul>
+<!-- ## Why are random variables useful?  -->
+<!-- - Can use powerful tools from calculus and real analysis to analyze random processes -->
+<!-- - Compute **expectations**; build econometric models of expectations of random variables -->
+</section></section>
+<section><section id="distributions" class="title-slide slide level1"><h1>Distributions</h1></section><section id="distributions-1" class="slide level2">
+<h2>Distributions</h2>
+<ul>
+<li><p>A random variable has a distribution that represents the likelihood that any of the possible values would occur</p></li>
+<li><p>Distinguish b/w <strong>discrete</strong> and <strong>continuous</strong> random variables</p>
+<ul>
+<li><p>Discrete: take a countable number of values</p></li>
+<li><p>Continuous: take values on a continuum</p></li>
+</ul></li>
+</ul>
+</section><section id="the-pmf-and-cdf-of-a-discrete-random-variable" class="slide level2">
+<h2>The PMF and CDF of a discrete random variable</h2>
+<ul>
+<li><p>The <strong>probability mass function (PMF)</strong> (or <strong>probability distribution</strong>) of a <strong>discrete</strong> random variable <span class="math inline">\(X\)</span> is</p>
+<p><span class="math display">\[f_X(x) = P(X = x); \quad  \sum_x f_X(x) = 1\]</span></p></li>
+<li><p>The <strong>cumulative distribution function (CDF)</strong> of a discrete random variable <span class="math inline">\(X\)</span> is is</p>
+<p><span class="math display">\[F_X(x) = P(X \leq x)\]</span></p></li>
+</ul>
+</section><section id="the-cdf-of-a-continuous-random-variable" class="slide level2">
+<h2>The CDF of a continuous random variable</h2>
+<ul>
+<li><p>The CDF of a <strong>continuous</strong> random variable <span class="math inline">\(X\)</span> is defined exactly as for discrete random variables:</p>
+<p><span class="math display">\[F_X(x) = P(X \leq x)\]</span></p></li>
+</ul>
+</section><section id="the-probability-density-function" class="slide level2">
+<h2>The probability density function</h2>
+<ul>
+<li><p>The PMF is inappropriate for continuous random variables; instead, introduce the <strong>probability density function (PDF)</strong></p></li>
+<li><p>The area under the PDF <span class="math inline">\(f_X(X)\)</span> b/w two points is equal to the probability that <span class="math inline">\(X\)</span> fall b/w those two points</p>
+<p><span class="math display">\[\int_a^b f_X(x) dx = F_X(b) - F_X(a)\]</span></p></li>
+<li><p>The PDF is the derivative of the CDF, and integrates to 1</p>
+<p><span class="math display">\[f_X(x) = \frac{d}{dx} F_X(x); \quad \int f_X(x) dx = 1\]</span></p></li>
+</ul>
+</section></section>
+<section><section id="expectations" class="title-slide slide level1"><h1>Expectations</h1></section><section id="the-expected-value-of-a-random-variable" class="slide level2">
+<h2>The expected value of a random variable</h2>
+<!-- - Let $Y$ be a random variable with PMF/PDF $f_Y(y)$ -->
+<ul>
+<li><p>The <strong>expected value</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{E}(Y)\)</span>, is the average value of <span class="math inline">\(Y\)</span> over many repeated, independent occurrences</p>
+<p><span class="math display">\[\textrm{E}(Y) = \left\{ 
+\begin{array}{ll}
+\sum_y y f_Y(y) &amp; \text{if } Y \text{ discrete} \\[0.5ex]
+\int y f_Y(y) dy &amp; \text{if } Y \text{ continuous}
+\end{array}
+\right.\]</span></p></li>
+<li><p><span class="math inline">\(\textrm{E}(Y)\)</span> is the <strong>mean</strong> of <span class="math inline">\(Y\)</span>, and is sometimes denoted <span class="math inline">\(\mu_Y\)</span></p></li>
+<li><p>The mean measures the <strong>location</strong> of a distribution</p></li>
+</ul>
+</section><section id="variance-of-a-random-variable" class="slide level2">
+<h2>Variance of a random variable</h2>
+<ul>
+<li><p>The <strong>variance</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{var}(Y)\)</span>, is the expected value of the squared deviation of <span class="math inline">\(Y\)</span> from its mean:</p>
+<p><span class="math display">\[\textrm{var}(Y) = \textrm{E}[(Y-\mu_Y)^2]\]</span></p></li>
+<li><p>The variance is sometimes denoted <span class="math inline">\(\sigma^2_Y\)</span></p></li>
+<li><p>The variance measures the <strong>spread</strong> of a distribution</p></li>
+</ul>
+</section><section id="the-standard-deviation-of-a-random-variable" class="slide level2">
+<h2>The standard deviation of a random variable</h2>
+<ul>
+<li><p>The <strong>standard deviation</strong> is the square root of the variance, and is denoted <span class="math inline">\(\textrm{sd}(Y)\)</span> or <span class="math inline">\(\sigma_Y\)</span></p>
+<p><span class="math display">\[\sigma_Y = \sqrt{\sigma^2_Y}\]</span></p></li>
+<li><p>The standard deviation is measured in units of <span class="math inline">\(Y\)</span></p></li>
+</ul>
+<!-- ## Mean and variance of linear transformations -->
+<!-- - $X$ is a random variable w/ mean $\mu_X$ and variance $\sigma^2_X$ -->
+<!-- - Let $Y = a + b X$, where $a$ and $b$ are parameters; then, -->
+<!--   $$\mu_Y = a + b \mu_X; \quad \sigma^2_Y = b^2 \sigma^2_X$$ -->
+</section><section id="a-standardized-random-variable" class="slide level2">
+<h2>A standardized random variable</h2>
+<ul>
+<li><p>A random variable <span class="math inline">\(Y\)</span> can be transformed into a random variable with mean 0 and variance 1</p>
+<ul>
+<li><p>subtract the mean of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mu_Y\)</span>,</p></li>
+<li><p>divide by the standard deviation of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\sigma_Y\)</span>,</p></li>
+</ul></li>
+<li><p>This process is called <strong>standardization</strong>; the standardized random variable computed from <span class="math inline">\(Y\)</span> is</p>
+<p><span class="math display">\[\frac{Y - \mu_Y}{\sigma_Y}\]</span></p></li>
+<li><p>Standardized random variables are <strong>unit-free</strong></p></li>
+</ul>
+<!-- ## Moments of a distribution -->
+<!--  <!-- given by **expected value of $Y$ raised to the power of $k$, $Y^k$**, i.e. -->
+<p>–&gt; <!--   <!-- given by **expected value of the deviation of $Y$ from $\mu_Y$ raised to the power of $k$, $(Y-\mu_Y)^k$**, i.e.  --> –&gt;</p>
+<!-- - $\mathrm{E}(Y^k)$ is denoted the **$k$th moment** of the distribution of $Y$ -->
+<!--   The mean $\mu_Y$ is the **first moment** of the distribution of $Y$ -->
+<!-- - $\mathrm{E}[(Y-\mu_Y)^k]$ is denoted the **$k$th central moment** of the distribution of $Y$ -->
+<!--   The first central moment is 0; the variance $\sigma_Y^2$ is the **second central moment** of the distribution of $Y$ -->
+<!-- - The mean captures the **location** ("the center") of a distribution, and the variance captures its **spread** -->
+<!--   The third and fourth moments ($k = 3,4$) capture **skewness** ("lack of symmetry") and **kurtosis** ("tail thickness") of a distribution -->
+</section></section>
+<section><section id="summary" class="title-slide slide level1"><h1>Summary</h1></section><section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li><p>A random variable assigns a number to a random outcome</p></li>
+<li><p>The probabilities with which a random variable takes on different values are summarized by the PMF/PDF (for discrete/continuous random variables) and the CDF</p></li>
+<li><p>The expected value of a random variable is the probability or density weighted average of the random variable</p></li>
+<li><p>The mean of a random variable measures the location of its distribution.</p></li>
+<li><p>The standard deviation of a random variable measures the spread of its distribution.</p></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'none', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          numbers: true,
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
