@@ -468,77 +468,77 @@ EC2203 | Royal Holloway | 2020/21
 </section>
 </section>
 <section id="outline" class="title-slide slide level1"><h1>Outline</h1><ul>
-<li class="fragment"><p>Random variables</p></li>
-<li class="fragment"><p>Distributions</p></li>
-<li class="fragment"><p>Expectations</p></li>
+<li><p>Random variables</p></li>
+<li><p>Distributions</p></li>
+<li><p>Expectations</p></li>
 </ul></section>
 <section><section id="random-variables" class="title-slide slide level1"><h1>Random variables</h1></section><section id="randomness" class="slide level2">
 <h2>Randomness</h2>
 <ul>
-<li class="fragment"><p>A random process is a definite outcome that cannot be predicted with certainty</p>
+<li><p>A random process is a definite outcome that cannot be predicted with certainty</p>
 <ul>
-<li class="fragment"><p>Coin flip</p></li>
-<li class="fragment"><p>Student test scores (for example, your EC2203 mark)</p></li>
-<li class="fragment"><p>Waiting time in the College shop</p></li>
-<li class="fragment"><p>The FTSE100 index</p></li>
-<li class="fragment"><p>Salary in your first job</p></li>
+<li><p>Coin flip</p></li>
+<li><p>Student test scores (for example, your EC2203 mark)</p></li>
+<li><p>Waiting time in the College shop</p></li>
+<li><p>The FTSE100 index</p></li>
+<li><p>Salary in your first job</p></li>
 </ul></li>
-<li class="fragment"><p>We use <strong>random variables</strong> to analyze situations involving randomness</p></li>
+<li><p>We use <strong>random variables</strong> to analyze situations involving randomness</p></li>
 </ul>
 </section><section id="outcomes-sample-space-and-events" class="slide level2">
 <h2>Outcomes, sample space, and events</h2>
 <ul>
-<li class="fragment"><p>Mutually exclusive potential results of a random process are called <strong>outcomes</strong></p></li>
-<li class="fragment"><p>The set of all possible outcomes is called the <strong>sample space</strong>, and is typically denoted <span class="math inline">\(\Omega\)</span></p></li>
-<li class="fragment"><p>An <strong>event</strong> is a subset of the sample space <span class="math inline">\(\Omega\)</span></p></li>
+<li><p>Mutually exclusive potential results of a random process are called <strong>outcomes</strong></p></li>
+<li><p>The set of all possible outcomes is called the <strong>sample space</strong>, and is typically denoted <span class="math inline">\(\Omega\)</span></p></li>
+<li><p>An <strong>event</strong> is a subset of the sample space <span class="math inline">\(\Omega\)</span></p></li>
 </ul>
 </section><section id="probability" class="slide level2">
 <h2>Probability</h2>
 <ul>
-<li class="fragment"><p>Let <span class="math inline">\(P\)</span> be <strong>probability measure</strong>. <span class="math inline">\(P(E)\)</span> is the <strong>probability</strong> that event <span class="math inline">\(E\)</span> is realized</p></li>
-<li class="fragment"><p>To be a probability measure, <span class="math inline">\(P\)</span> must satisfy the three Axioms of Probability. The axioms implies that <span class="math inline">\(P\)</span> has the intuitive properties that</p>
+<li><p>Let <span class="math inline">\(P\)</span> be <strong>probability measure</strong>. <span class="math inline">\(P(E)\)</span> is the <strong>probability</strong> that event <span class="math inline">\(E\)</span> is realized</p></li>
+<li><p>To be a probability measure, <span class="math inline">\(P\)</span> must satisfy the three Axioms of Probability. The axioms implies that <span class="math inline">\(P\)</span> has the intuitive properties that</p>
 <p><span class="math display">\[0 \leq P(E) \leq 1; \quad P(\Omega) = 1\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(P(E)\)</span> is the <strong>proportion of times <span class="math inline">\(E\)</span> is realized in repeated, independent trials</strong> of the random process.</p></li>
+<li><p><span class="math inline">\(P(E)\)</span> is the <strong>proportion of times <span class="math inline">\(E\)</span> is realized in repeated, independent trials</strong> of the random process.</p></li>
 </ul>
 </section><section id="random-variables-1" class="slide level2">
 <h2>Random variables</h2>
 <ul>
-<li class="fragment"><p><strong>Numerical</strong> summary of a random outcome</p></li>
-<li class="fragment"><p>A random variable <span class="math inline">\(X\)</span> assigns a <strong>real number</strong> to every element in a sample space</p>
+<li><p><strong>Numerical</strong> summary of a random outcome</p></li>
+<li><p>A random variable <span class="math inline">\(X\)</span> assigns a <strong>real number</strong> to every element in a sample space</p>
 <p><span class="math display">\[X: \Omega \mapsto \mathbb{R}\]</span></p></li>
 </ul>
 </section></section>
 <section><section id="distributions" class="title-slide slide level1"><h1>Distributions</h1></section><section id="distributions-1" class="slide level2">
 <h2>Distributions</h2>
 <ul>
-<li class="fragment"><p>A random variable has a distribution that represents the likelihood that any of the possible values would occur</p></li>
-<li class="fragment"><p>Distinguish b/w <strong>discrete</strong> and <strong>continuous</strong> random variables</p>
+<li><p>A random variable has a distribution that represents the likelihood that any of the possible values would occur</p></li>
+<li><p>Distinguish b/w <strong>discrete</strong> and <strong>continuous</strong> random variables</p>
 <ul>
-<li class="fragment"><p>Discrete: take a countable number of values</p></li>
-<li class="fragment"><p>Continuous: take values on a continuum</p></li>
+<li><p>Discrete: take a countable number of values</p></li>
+<li><p>Continuous: take values on a continuum</p></li>
 </ul></li>
 </ul>
 </section><section id="the-pmf-and-cdf-of-a-discrete-random-variable" class="slide level2">
 <h2>The PMF and CDF of a discrete random variable</h2>
 <ul>
-<li class="fragment"><p>The <strong>probability mass function (PMF)</strong> (or <strong>probability distribution</strong>) of a <strong>discrete</strong> random variable <span class="math inline">\(X\)</span> is</p>
+<li><p>The <strong>probability mass function (PMF)</strong> (or <strong>probability distribution</strong>) of a <strong>discrete</strong> random variable <span class="math inline">\(X\)</span> is</p>
 <p><span class="math display">\[f_X(x) = P(X = x); \quad  \sum_x f_X(x) = 1\]</span></p></li>
-<li class="fragment"><p>The <strong>cumulative distribution function (CDF)</strong> of a discrete random variable <span class="math inline">\(X\)</span> is is</p>
+<li><p>The <strong>cumulative distribution function (CDF)</strong> of a discrete random variable <span class="math inline">\(X\)</span> is is</p>
 <p><span class="math display">\[F_X(x) = P(X \leq x)\]</span></p></li>
 </ul>
 </section><section id="the-cdf-of-a-continuous-random-variable" class="slide level2">
 <h2>The CDF of a continuous random variable</h2>
 <ul>
-<li class="fragment"><p>The CDF of a <strong>continuous</strong> random variable <span class="math inline">\(X\)</span> is defined exactly as for discrete random variables:</p>
+<li><p>The CDF of a <strong>continuous</strong> random variable <span class="math inline">\(X\)</span> is defined exactly as for discrete random variables:</p>
 <p><span class="math display">\[F_X(x) = P(X \leq x)\]</span></p></li>
 </ul>
 </section><section id="the-probability-density-function" class="slide level2">
 <h2>The probability density function</h2>
 <ul>
-<li class="fragment"><p>The PMF is inappropriate for continuous random variables; instead, introduce the <strong>probability density function (PDF)</strong></p></li>
-<li class="fragment"><p>The area under the PDF <span class="math inline">\(f_X(X)\)</span> b/w two points is equal to the probability that <span class="math inline">\(X\)</span> fall b/w those two points</p>
+<li><p>The PMF is inappropriate for continuous random variables; instead, introduce the <strong>probability density function (PDF)</strong></p></li>
+<li><p>The area under the PDF <span class="math inline">\(f_X(X)\)</span> b/w two points is equal to the probability that <span class="math inline">\(X\)</span> fall b/w those two points</p>
 <p><span class="math display">\[\int_a^b f_X(x) dx = F_X(b) - F_X(a)\]</span></p></li>
-<li class="fragment"><p>The PDF is the derivative of the CDF, and integrates to 1</p>
+<li><p>The PDF is the derivative of the CDF, and integrates to 1</p>
 <p><span class="math display">\[f_X(x) = \frac{d}{dx} F_X(x); \quad \int f_X(x) dx = 1\]</span></p></li>
 </ul>
 </section></section>
@@ -546,52 +546,52 @@ EC2203 | Royal Holloway | 2020/21
 <h2>The expected value of a random variable</h2>
 <!-- - Let $Y$ be a random variable with PMF/PDF $f_Y(y)$ -->
 <ul>
-<li class="fragment"><p>The <strong>expected value</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{E}(Y)\)</span>, is the average value of <span class="math inline">\(Y\)</span> over many repeated, independent occurrences</p>
+<li><p>The <strong>expected value</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{E}(Y)\)</span>, is the average value of <span class="math inline">\(Y\)</span> over many repeated, independent occurrences</p>
 <p><span class="math display">\[\textrm{E}(Y) = \left\{ 
 \begin{array}{ll}
 \sum_y y f_Y(y) &amp; \text{if } Y \text{ discrete} \\[0.5ex]
 \int y f_Y(y) dy &amp; \text{if } Y \text{ continuous}
 \end{array}
 \right.\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\textrm{E}(Y)\)</span> is the <strong>mean</strong> of <span class="math inline">\(Y\)</span>, and is sometimes denoted <span class="math inline">\(\mu_Y\)</span></p></li>
-<li class="fragment"><p>The mean measures the <strong>location</strong> of a distribution</p></li>
+<li><p><span class="math inline">\(\textrm{E}(Y)\)</span> is the <strong>mean</strong> of <span class="math inline">\(Y\)</span>, and is sometimes denoted <span class="math inline">\(\mu_Y\)</span></p></li>
+<li><p>The mean measures the <strong>location</strong> of a distribution</p></li>
 </ul>
 </section><section id="variance-of-a-random-variable" class="slide level2">
 <h2>Variance of a random variable</h2>
 <ul>
-<li class="fragment"><p>The <strong>variance</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{var}(Y)\)</span>, is the expected value of the squared deviation of <span class="math inline">\(Y\)</span> from its mean:</p>
+<li><p>The <strong>variance</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{var}(Y)\)</span>, is the expected value of the squared deviation of <span class="math inline">\(Y\)</span> from its mean:</p>
 <p><span class="math display">\[\textrm{var}(Y) = \textrm{E}[(Y-\mu_Y)^2]\]</span></p></li>
-<li class="fragment"><p>The variance is sometimes denoted <span class="math inline">\(\sigma^2_Y\)</span></p></li>
-<li class="fragment"><p>The variance measures the <strong>spread</strong> of a distribution</p></li>
+<li><p>The variance is sometimes denoted <span class="math inline">\(\sigma^2_Y\)</span></p></li>
+<li><p>The variance measures the <strong>spread</strong> of a distribution</p></li>
 </ul>
 </section><section id="the-standard-deviation-of-a-random-variable" class="slide level2">
 <h2>The standard deviation of a random variable</h2>
 <ul>
-<li class="fragment"><p>The <strong>standard deviation</strong> is the square root of the variance, and is denoted <span class="math inline">\(\textrm{sd}(Y)\)</span> or <span class="math inline">\(\sigma_Y\)</span></p>
+<li><p>The <strong>standard deviation</strong> is the square root of the variance, and is denoted <span class="math inline">\(\textrm{sd}(Y)\)</span> or <span class="math inline">\(\sigma_Y\)</span></p>
 <p><span class="math display">\[\sigma_Y = \sqrt{\sigma^2_Y}\]</span></p></li>
-<li class="fragment"><p>The standard deviation is measured in units of <span class="math inline">\(Y\)</span></p></li>
+<li><p>The standard deviation is measured in units of <span class="math inline">\(Y\)</span></p></li>
 </ul>
 </section><section id="a-standardized-random-variable" class="slide level2">
 <h2>A standardized random variable</h2>
 <ul>
-<li class="fragment"><p>A random variable <span class="math inline">\(Y\)</span> can be transformed into a random variable with mean 0 and variance 1</p>
+<li><p>A random variable <span class="math inline">\(Y\)</span> can be transformed into a random variable with mean 0 and variance 1</p>
 <ul>
-<li class="fragment"><p>subtract the mean of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mu_Y\)</span>,</p></li>
-<li class="fragment"><p>divide by the standard deviation of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\sigma_Y\)</span>,</p></li>
+<li><p>subtract the mean of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mu_Y\)</span>,</p></li>
+<li><p>divide by the standard deviation of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\sigma_Y\)</span>,</p></li>
 </ul></li>
-<li class="fragment"><p>This process is called <strong>standardization</strong>; the standardized random variable computed from <span class="math inline">\(Y\)</span> is</p>
+<li><p>This process is called <strong>standardization</strong>; the standardized random variable computed from <span class="math inline">\(Y\)</span> is</p>
 <p><span class="math display">\[\frac{Y - \mu_Y}{\sigma_Y}\]</span></p></li>
-<li class="fragment"><p>Standardized random variables are <strong>unit-free</strong></p></li>
+<li><p>Standardized random variables are <strong>unit-free</strong></p></li>
 </ul>
 </section></section>
 <section><section id="summary" class="title-slide slide level1"><h1>Summary</h1></section><section id="summary-1" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li class="fragment"><p>A random variable assigns a number to a random outcome</p></li>
-<li class="fragment"><p>The probabilities with which a random variable takes on different values are summarized by the PMF/PDF (for discrete/continuous random variables) and the CDF</p></li>
-<li class="fragment"><p>The expected value of a random variable is the probability or density weighted average of the random variable</p></li>
-<li class="fragment"><p>The mean of a random variable measures the location of its distribution.</p></li>
-<li class="fragment"><p>The standard deviation of a random variable measures the spread of its distribution.</p></li>
+<li><p>A random variable assigns a number to a random outcome</p></li>
+<li><p>The probabilities with which a random variable takes on different values are summarized by the PMF/PDF (for discrete/continuous random variables) and the CDF</p></li>
+<li><p>The expected value of a random variable is the probability or density weighted average of the random variable</p></li>
+<li><p>The mean of a random variable measures the location of its distribution.</p></li>
+<li><p>The standard deviation of a random variable measures the spread of its distribution.</p></li>
 </ul>
 </section></section>
     </div>
