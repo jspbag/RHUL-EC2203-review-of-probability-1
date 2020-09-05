@@ -1,0 +1,413 @@
+---
+pagetitle: Review of probability I
+output: 
+  revealjs::revealjs_presentation:
+    incremental: false
+    theme: solarized
+    self_contained: false
+    # reveal_plugins: ["menu","notes","chalkboard"]
+    reveal_plugins: ["menu"]
+    highlight: pygments
+    center: true
+    transition: none
+    background_transition: none 
+    reveal_options:
+      # chalkboard:
+      #   theme: whiteboard
+      #   toggleNotesButton: true
+      #   toggleChalkboardButton: true
+      menu:
+        numbers: true
+      slideNumber: true
+      previewLinks: false
+    fig_caption: true
+    css: mystyle.css
+    
+--- 
+
+<section>
+
+<h1>Random variables, distributions, and expectations</h1>
+
+Based on Stock and Watson, ch. 2
+
+<br>
+
+<h2>[Jesper Bagger](mailto:jesper.bagger@rhul.ac.uk)</h2>
+
+<h3>EC2203 | Royal Holloway | 2020/21</h3>
+
+
+
+</section>
+
+# Outline
+
+- Random variables
+
+- Distributions
+
+- Expectations
+
+
+# Random variables
+
+## Randomness
+
+- A random process is a definite outcome that cannot be predicted with certainty
+
+  - Coin flip
+  
+  - Student test scores (for example, your EC2203 mark)
+  
+  - Waiting time in the College shop
+  
+  - The FTSE100 index
+  
+  - Salary in your first job
+  
+- We use **random variables** to analyze random processes
+  
+  
+## Random variables
+
+- Provides a **numerical** summary of a random outcome
+
+- A random variable assigns a **real number** to every possible outcome of a random process
+
+- A random variable takes **different values** depending on the outcomes of the random process under study
+
+
+# Distributions
+
+## Distributions
+
+- The probability that, say, $X=x$ is the **proportion of times $X=x$ in many independent realizations** of $X$
+
+- The **distribution** of a random variable specifies the probability of realizing each value of the random variable
+
+- Distinguish b/w **discrete** and **continuous** random variables
+
+
+## The PMF and CDF of a discrete random variable
+
+- The **probability mass function (PMF)** (or **probability distribution**) of a **discrete** random variable $X$ is
+
+  <div class="box">
+  $$f_X(x) = P(X = x); \quad  \sum_x f_X(x) = 1$$
+  </div>
+  
+- The **cumulative distribution function (CDF)** of a discrete random variable $X$ is is
+
+  <div class="box">
+  $$F_X(x) = P(X \leq x)$$
+  </div>
+
+## The CDF of a continuous random variable
+
+- The CDF of a **continuous** random variable $X$ is defined exactly as for discrete random variables:
+
+  <div class="box">
+  $$F_X(x) = P(X \leq x)$$
+  </div>
+
+## The probability density function
+
+- The PMF is inappropriate for continuous random variables; instead, introduce the **probability density function (PDF)**
+
+- The area under the PDF $f_X(X)$ b/w two points is equal to the probability that $X$ fall b/w those two points
+
+  $$\int_a^b f_X(x) dx = F_X(b) - F_X(a)$$
+
+- The PDF is the derivative of the CDF, and integrates to 1
+
+  <div class="box">
+  $$f_X(x) = \frac{d}{dx} F_X(x); \quad \int f_X(x) dx = 1$$
+  </div>
+  
+
+## The Normal PDF and CDF
+
+```{r echo=FALSE, error=FALSE, warning=FALSE}
+par(mfrow=c(2,1), mar = c(2,4.1,1,4.1))
+# draw a plot of the N(0,1) PDF
+x <- seq(-3.5,3.5,length=200)
+pdf <- dnorm(x)
+plot(x,pdf,
+      type = "l",
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-3.5, 3.5),
+      ylab = "Density",
+      xlab = " ",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+# draw a plot of the N(0,1) CDF
+x <- seq(-3.5,3.5,length=200)
+cdf <- pnorm(x)
+plot(x,cdf,
+      type = "l",
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-3.5, 3.5),
+      ylab = "Probability",
+      xlab = " ",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+
+```
+
+
+## The Normal PDF and CDF
+
+```{r echo=FALSE, error=FALSE, warning=FALSE}
+par(mfrow=c(2,1), mar = c(2,4.1,1,4.1))
+# draw a plot of the N(0,1) PDF
+
+x <- seq(-3.5,3.5,length=200)
+pdf <- dnorm(x)
+plot(x,pdf,
+      type = "l",
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-3.5, 3.5),
+      ylab = "Density",
+      xlab = " ",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+
+# The shaded area
+xshade <- seq(-3.5,0,length=200)
+pdfshade <- dnorm(xshade)
+polygon(c(-3.5,xshade,0),c(0,pdfshade,0), col="lightgray", lwd = 0.1)
+lines(x,pdf,
+      lwd = 3,
+      col="blue")
+
+# draw a plot of the N(0,1) CDF
+x <- seq(-3.5,3.5,length=200)
+cdf <- pnorm(x)
+plot(x,cdf,
+      type = "l",
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-3.5, 3.5),
+      ylab = "Probability",
+      xlab = " ",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+
+segments(0, -1, 0, pnorm(0), col = "black", lty = 2, lwd = 3)
+segments(-4, pnorm(0), 0, pnorm(0), col = "black", lty = 2, lwd = 3)
+```
+
+
+# Expectations
+
+## The expected value of a random variable
+
+- The **expected value** of $Y$, denoted $\textrm{E}(Y)$, is the average value of $Y$ over many repeated, independent occurrences 
+
+  <div class="box">
+  $$\textrm{E}(Y) = \left\{ 
+  \begin{array}{ll}
+  \sum_y y f_Y(y) & \text{if } Y \text{ discrete} \\[0.5ex]
+  \int y f_Y(y) dy & \text{if } Y \text{ continuous}
+  \end{array}
+  \right.$$
+  </div>
+
+- $\textrm{E}(Y)$ is the **mean** of $Y$, and is sometimes denoted $\mu_Y$
+
+## The mean $\mu_Y$ measures distribution location
+
+```{r echo=FALSE, error=FALSE, warning=FALSE}
+# draw a plot of the N(0,1) PDF
+curve(dnorm(x),
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-3.,4 ),
+      ylab = "Density",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+curve(dnorm(x,mean = 1, sd = 1),
+      col = "red",
+      lwd = 3,
+      add = T)
+# add a legend
+legend("topright",
+       as.character(c("Mean = 0","Mean = 1")), 
+       col = c("blue","red") , 
+       lwd = 3,
+      bty = "n",
+       cex = 1.5)
+
+```
+
+
+## Variance of a random variable
+
+- The **variance** of $Y$, denoted $\textrm{var}(Y)$, is the expected value of the squared deviation of $Y$ from its mean:
+
+  <div class="box">
+  $$\mathrm{var}(Y) = \textrm{E}[(Y-\mu_Y)^2]$$
+  </div>
+
+- The variance is often denoted $\sigma^2_Y$
+
+## The variance $\sigma^2_Y$ measures distribution spread
+
+```{r echo=FALSE, error=FALSE, warning=FALSE}
+# draw a plot of the N(0,1) PDF
+curve(dnorm(x),
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-6.5,6.5),
+      ylab = "Density",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+curve(dnorm(x,mean = 0, sd = 2),
+      col = "red",
+      lwd = 3,
+      add = T)
+# add a legend
+legend("topright",
+       as.character(c("Var = 1","Var = 4")), 
+       col = c("blue","red") , 
+       lwd = 3,
+      bty = "n",
+       cex = 1.5)
+
+```
+
+
+## The standard deviation of a random variable
+
+- The **standard deviation** is the square root of the variance
+
+  <div class="box">
+  $$\sigma_Y = \sqrt{\sigma^2_Y}$$
+  </div>
+
+- The standard deviation is measured in units of $Y$
+
+
+## A standardized random variable 
+
+- **Standardization** transforms a random variable $Y$ into a random variable with mean 0 and variance 1
+
+- The standardized random variable computed from $Y$ is
+
+  <div class="box">
+  $$\frac{Y - \mu_Y}{\sigma_Y}$$
+  </div>
+
+- Standardized random variables are **unit-free**
+
+## The Normal distribution
+
+- Suppose $Y$ has a **Normal distribution** with mean $\mu_Y$ and variance $\sigma_Y^2$. We write
+
+  $$Y \sim \mathcal{N}(\mu_Y,\sigma_Y^2)$$
+- If we standardize $Y$, we obtain random variable $Z$ with a **standard Normal distribution**; we write
+
+  $$Z = \frac{Y-\mu_Y}{\sigma_Y} \sim \mathcal{N}(0,1)$$
+
+- The standard Normal PDF is denoted $\phi(z)$; the standard Normal CDF is $\Phi(z) = \Pr(Z \leq z) = \int_{-\infty}^z \phi(x) dx$
+
+
+## The standard Normal PDF
+
+```{r echo=FALSE, error=FALSE, warning=FALSE}
+# draw a plot of the N(0,1) PDF
+curve(dnorm(x),
+      cex.axis = 1.5, 
+      cex.lab = 1.5, 
+      xlim = c(-6.5,6.5),
+      ylab = "Density",
+      col = "blue",
+      lwd = 3,
+      panel.first = grid(nx = NULL, 
+                        ny = NULL, 
+                        col = "lightgray", 
+                        lty = "dotted", 
+                        lwd = 2)) 
+box(which = "plot", 
+    lty = "solid", 
+    lwd = 3)
+curve(dnorm(x,mean = 1, sd = 2),
+      col = "red",
+      lwd = 3,
+      add = T)
+# add a legend
+legend("topright",
+       as.character(c("N(0,1)","N(1,4)")), 
+       col = c("blue","red") , 
+       lwd = 3,
+       bty = "n",
+       cex = 1.5)
+
+```
+
+
+# Summary
+
+## Summary
+
+- A random variable assigns a number to a random outcome 
+
+- The probabilities with which a random variable takes on different values are summarized by the PMF/PDF (for discrete/continuous random variables) and the CDF
+
+- The expected value of a random variable is the probability or density weighted average of the random variable
+
+- The mean of a random variable measures the location of its distribution. 
+
+- The standard deviation of a random variable measures the spread of its distribution.
