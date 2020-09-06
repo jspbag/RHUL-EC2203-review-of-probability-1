@@ -455,7 +455,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 
 <section>
 <h1>
-Random variables, distributions, and expectations
+Random variables and distributions
 </h1>
 <p>Based on Stock and Watson, ch. 2</p>
 <p><br></p>
@@ -469,8 +469,7 @@ EC2203 | Royal Holloway | 2020/21
 </section>
 <section id="outline" class="title-slide slide level1"><h1>Outline</h1><ul>
 <li><p>Random variables</p></li>
-<li><p>Distributions</p></li>
-<li><p>Expectations</p></li>
+<li><p>Probability distributions</p></li>
 </ul></section>
 <section><section id="random-variables" class="title-slide slide level1"><h1>Random variables</h1></section><section id="randomness" class="slide level2">
 <h2>Randomness</h2>
@@ -538,75 +537,13 @@ EC2203 | Royal Holloway | 2020/21
 <h2>The Normal PDF and CDF</h2>
 <p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" /><!-- --></p>
 </section></section>
-<section><section id="expectations" class="title-slide slide level1"><h1>Expectations</h1></section><section id="the-expected-value-of-a-random-variable" class="slide level2">
-<h2>The expected value of a random variable</h2>
-<ul>
-<li><p>The <strong>expected value</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{E}(Y)\)</span>, is the average value of <span class="math inline">\(Y\)</span> over many repeated, independent occurrences</p>
-<div class="box">
-<p><span class="math display">\[\textrm{E}(Y) = \left\{ 
-\begin{array}{ll}
-\sum_y y f_Y(y) &amp; \text{if } Y \text{ discrete} \\[0.5ex]
-\int y f_Y(y) dy &amp; \text{if } Y \text{ continuous}
-\end{array}
-\right.\]</span></p>
-</div></li>
-<li><p><span class="math inline">\(\textrm{E}(Y)\)</span> is the <strong>mean</strong> of <span class="math inline">\(Y\)</span>, and is sometimes denoted <span class="math inline">\(\mu_Y\)</span></p></li>
-</ul>
-</section><section id="the-mean-mu_y-measures-distribution-location" class="slide level2">
-<h2>The mean <span class="math inline">\(\mu_Y\)</span> measures distribution location</h2>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" /><!-- --></p>
-</section><section id="variance-of-a-random-variable" class="slide level2">
-<h2>Variance of a random variable</h2>
-<ul>
-<li><p>The <strong>variance</strong> of <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(\textrm{var}(Y)\)</span>, is the expected value of the squared deviation of <span class="math inline">\(Y\)</span> from its mean:</p>
-<div class="box">
-<p><span class="math display">\[\mathrm{var}(Y) = \textrm{E}[(Y-\mu_Y)^2]\]</span></p>
-</div></li>
-<li><p>The variance is often denoted <span class="math inline">\(\sigma^2_Y\)</span></p></li>
-</ul>
-</section><section id="the-variance-sigma2_y-measures-distribution-spread" class="slide level2">
-<h2>The variance <span class="math inline">\(\sigma^2_Y\)</span> measures distribution spread</h2>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" /><!-- --></p>
-</section><section id="the-standard-deviation-of-a-random-variable" class="slide level2">
-<h2>The standard deviation of a random variable</h2>
-<ul>
-<li><p>The <strong>standard deviation</strong> is the square root of the variance</p>
-<div class="box">
-<p><span class="math display">\[\sigma_Y = \sqrt{\sigma^2_Y}\]</span></p>
-</div></li>
-<li><p>The standard deviation is measured in units of <span class="math inline">\(Y\)</span></p></li>
-</ul>
-</section><section id="a-standardized-random-variable" class="slide level2">
-<h2>A standardized random variable</h2>
-<ul>
-<li><p><strong>Standardization</strong> transforms a random variable <span class="math inline">\(Y\)</span> into a random variable with mean 0 and variance 1</p></li>
-<li><p>The standardized random variable computed from <span class="math inline">\(Y\)</span> is</p>
-<div class="box">
-<p><span class="math display">\[\frac{Y - \mu_Y}{\sigma_Y}\]</span></p>
-</div></li>
-<li><p>Standardized random variables are <strong>unit-free</strong></p></li>
-</ul>
-</section><section id="the-normal-distribution" class="slide level2">
-<h2>The Normal distribution</h2>
-<ul>
-<li><p>Suppose <span class="math inline">\(Y\)</span> has a <strong>Normal distribution</strong> with mean <span class="math inline">\(\mu_Y\)</span> and variance <span class="math inline">\(\sigma_Y^2\)</span>. We write</p>
-<p><span class="math display">\[Y \sim \mathcal{N}(\mu_Y,\sigma_Y^2)\]</span></p></li>
-<li><p>If we standardize <span class="math inline">\(Y\)</span>, we obtain random variable <span class="math inline">\(Z\)</span> with a <strong>standard Normal distribution</strong>; we write</p>
-<p><span class="math display">\[Z = \frac{Y-\mu_Y}{\sigma_Y} \sim \mathcal{N}(0,1)\]</span></p></li>
-<li><p>The standard Normal PDF is denoted <span class="math inline">\(\phi(z)\)</span>; the standard Normal CDF is <span class="math inline">\(\Phi(z) = \Pr(Z \leq z) = \int_{-\infty}^z \phi(x) dx\)</span></p></li>
-</ul>
-</section><section id="the-standard-normal-pdf" class="slide level2">
-<h2>The standard Normal PDF</h2>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" /><!-- --></p>
-</section></section>
 <section><section id="summary" class="title-slide slide level1"><h1>Summary</h1></section><section id="summary-1" class="slide level2">
 <h2>Summary</h2>
 <ul>
 <li><p>A random variable assigns a number to a random outcome</p></li>
-<li><p>The probabilities with which a random variable takes on different values are summarized by the PMF/PDF (for discrete/continuous random variables) and the CDF</p></li>
-<li><p>The expected value of a random variable is the probability or density weighted average of the random variable</p></li>
-<li><p>The mean of a random variable measures the location of its distribution.</p></li>
-<li><p>The standard deviation of a random variable measures the spread of its distribution.</p></li>
+<li><p>The probabilities with which a discrete random variable takes on different values are given by the PMF</p></li>
+<li><p>The probabilities with which a continuous random variable takes on different values are given by the PDF</p></li>
+<li><p>The CDF gives the probability that a random variable takes a value less than or equal to a specific value</p></li>
 </ul>
 </section></section>
     </div>
