@@ -77,7 +77,7 @@ Based on Stock and Watson, ch. 2
 
 # Distributions
 
-## Distributions
+## The distribution of a random variable
 
 - The probability that, say, $X=x$ is the **proportion of times $X=x$ in many independent realizations** of $X$
 
