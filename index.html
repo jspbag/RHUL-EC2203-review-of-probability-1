@@ -455,7 +455,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 
 <section>
 <h1>
-Random variables and distributions
+Random variables
 </h1>
 <p>Based on Stock and Watson, ch. 2</p>
 <p><br></p>
@@ -466,11 +466,10 @@ Random variables and distributions
 EC2203 | Royal Holloway | 2020/21
 </h3>
 </section>
+<!-- # Outline -->
+<!-- - Random variables -->
+<!-- - Probability distributions -->
 </section>
-<section id="outline" class="title-slide slide level1"><h1>Outline</h1><ul>
-<li><p>Random variables</p></li>
-<li><p>Probability distributions</p></li>
-</ul></section>
 <section><section id="random-variables" class="title-slide slide level1"><h1>Random variables</h1></section><section id="randomness" class="slide level2">
 <h2>Randomness</h2>
 <ul>
@@ -491,60 +490,141 @@ EC2203 | Royal Holloway | 2020/21
 <li><p>A random variable assigns a <strong>real number</strong> to every possible outcome of a random process</p></li>
 <li><p>A random variable takes <strong>different values</strong> depending on the outcomes of the random process under study</p></li>
 </ul>
-</section></section>
-<section><section id="distributions" class="title-slide slide level1"><h1>Distributions</h1></section><section id="the-distribution-of-a-random-variable" class="slide level2">
-<h2>The distribution of a random variable</h2>
-<ul>
-<li><p>The probability that, say, <span class="math inline">\(X=x\)</span> is the <strong>proportion of times <span class="math inline">\(X=x\)</span> in many independent realizations</strong> of <span class="math inline">\(X\)</span></p></li>
-<li><p>The <strong>distribution</strong> of a random variable specifies the probability of realizing each value of the random variable</p></li>
-<li><p>Distinguish b/w <strong>discrete</strong> and <strong>continuous</strong> random variables</p></li>
-</ul>
-</section><section id="the-pmf-and-cdf-of-a-discrete-random-variable" class="slide level2">
-<h2>The PMF and CDF of a discrete random variable</h2>
-<ul>
-<li><p>The <strong>probability mass function (PMF)</strong> (or <strong>probability distribution</strong>) of a <strong>discrete</strong> random variable <span class="math inline">\(X\)</span> is</p>
-<div class="box">
-<p><span class="math display">\[f_X(x) = P(X = x); \quad  \sum_x f_X(x) = 1\]</span></p>
-</div></li>
-<li><p>The <strong>cumulative distribution function (CDF)</strong> of a discrete random variable <span class="math inline">\(X\)</span> is is</p>
-<div class="box">
-<p><span class="math display">\[F_X(x) = P(X \leq x)\]</span></p>
-</div></li>
-</ul>
-</section><section id="the-cdf-of-a-continuous-random-variable" class="slide level2">
-<h2>The CDF of a continuous random variable</h2>
-<ul>
-<li><p>The CDF of a <strong>continuous</strong> random variable <span class="math inline">\(X\)</span> is defined exactly as for discrete random variables:</p>
-<div class="box">
-<p><span class="math display">\[F_X(x) = P(X \leq x)\]</span></p>
-</div></li>
-</ul>
-</section><section id="the-probability-density-function" class="slide level2">
-<h2>The probability density function</h2>
-<ul>
-<li><p>The PMF is inappropriate for continuous random variables; instead, introduce the <strong>probability density function (PDF)</strong></p></li>
-<li><p>The area under the PDF <span class="math inline">\(f_X(X)\)</span> b/w two points is equal to the probability that <span class="math inline">\(X\)</span> fall b/w those two points</p>
-<p><span class="math display">\[\int_a^b f_X(x) dx = F_X(b) - F_X(a)\]</span></p></li>
-<li><p>The PDF is the derivative of the CDF, and integrates to 1</p>
-<div class="box">
-<p><span class="math display">\[f_X(x) = \frac{d}{dx} F_X(x); \quad \int f_X(x) dx = 1\]</span></p>
-</div></li>
-</ul>
-</section><section id="the-normal-pdf-and-cdf" class="slide level2">
-<h2>The Normal PDF and CDF</h2>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" /><!-- --></p>
-</section><section id="the-normal-pdf-and-cdf-1" class="slide level2">
-<h2>The Normal PDF and CDF</h2>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" /><!-- --></p>
+<!-- # Distributions -->
+<!-- ## The distribution of a random variable -->
+<!-- - The probability that, say, $X=x$ is the **proportion of times $X=x$ in many independent realizations** of $X$ -->
+<!-- - The **distribution** of a random variable specifies the probability of realizing each value of the random variable -->
+<!-- - Distinguish b/w **discrete** and **continuous** random variables -->
+<!-- ## The PMF and CDF of a discrete random variable -->
+<!-- - The **probability mass function (PMF)** (or **probability distribution**) of a **discrete** random variable $X$ is -->
+<!--   <div class="box"> -->
+<!--   $$f_X(x) = P(X = x); \quad  \sum_x f_X(x) = 1$$ -->
+<!--   </div> -->
+<!-- - The **cumulative distribution function (CDF)** of a discrete random variable $X$ is is -->
+<!--   <div class="box"> -->
+<!--   $$F_X(x) = P(X \leq x)$$ -->
+<!--   </div> -->
+<!-- ## The CDF of a continuous random variable -->
+<!-- - The CDF of a **continuous** random variable $X$ is defined exactly as for discrete random variables: -->
+<!--   <div class="box"> -->
+<!--   $$F_X(x) = P(X \leq x)$$ -->
+<!--   </div> -->
+<!-- ## The probability density function -->
+<!-- - The PMF is inappropriate for continuous random variables; instead, introduce the **probability density function (PDF)** -->
+<!-- - The area under the PDF $f_X(X)$ b/w two points is equal to the probability that $X$ fall b/w those two points -->
+<!--   $$\int_a^b f_X(x) dx = F_X(b) - F_X(a)$$ -->
+<!-- - The PDF is the derivative of the CDF, and integrates to 1 -->
+<!--   <div class="box"> -->
+<!--   $$f_X(x) = \frac{d}{dx} F_X(x); \quad \int f_X(x) dx = 1$$ -->
+<!--   </div> -->
+<!-- ## The Normal PDF and CDF -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE} -->
+<!-- par(mfrow=c(2,1), mar = c(2,4.1,1,4.1)) -->
+<!-- # draw a plot of the N(0,1) PDF -->
+<!-- x <- seq(-3.5,3.5,length=200) -->
+<!-- pdf <- dnorm(x) -->
+<!-- plot(x,pdf, -->
+<!--       type = "l", -->
+<!--       cex.axis = 1.5,  -->
+<!--       cex.lab = 1.5,  -->
+<!--       xlim = c(-3.5, 3.5), -->
+<!--       ylab = "Density", -->
+<!--       xlab = " ", -->
+<!--       col = "blue", -->
+<!--       lwd = 3, -->
+<!--       panel.first = grid(nx = NULL,  -->
+<!--                         ny = NULL,  -->
+<!--                         col = "lightgray",  -->
+<!--                         lty = "dotted",  -->
+<!--                         lwd = 2))  -->
+<!-- box(which = "plot",  -->
+<!--     lty = "solid",  -->
+<!--     lwd = 3) -->
+<!-- # draw a plot of the N(0,1) CDF -->
+<!-- x <- seq(-3.5,3.5,length=200) -->
+<!-- cdf <- pnorm(x) -->
+<!-- plot(x,cdf, -->
+<!--       type = "l", -->
+<!--       cex.axis = 1.5,  -->
+<!--       cex.lab = 1.5,  -->
+<!--       xlim = c(-3.5, 3.5), -->
+<!--       ylab = "Probability", -->
+<!--       xlab = " ", -->
+<!--       col = "blue", -->
+<!--       lwd = 3, -->
+<!--       panel.first = grid(nx = NULL,  -->
+<!--                         ny = NULL,  -->
+<!--                         col = "lightgray",  -->
+<!--                         lty = "dotted",  -->
+<!--                         lwd = 2))  -->
+<!-- box(which = "plot",  -->
+<!--     lty = "solid",  -->
+<!--     lwd = 3) -->
+<!-- ``` -->
+<!-- ## The Normal PDF and CDF -->
+<!-- ```{r echo=FALSE, error=FALSE, warning=FALSE} -->
+<!-- par(mfrow=c(2,1), mar = c(2,4.1,1,4.1)) -->
+<!-- # draw a plot of the N(0,1) PDF -->
+<!-- x <- seq(-3.5,3.5,length=200) -->
+<!-- pdf <- dnorm(x) -->
+<!-- plot(x,pdf, -->
+<!--       type = "l", -->
+<!--       cex.axis = 1.5,  -->
+<!--       cex.lab = 1.5,  -->
+<!--       xlim = c(-3.5, 3.5), -->
+<!--       ylab = "Density", -->
+<!--       xlab = " ", -->
+<!--       col = "blue", -->
+<!--       lwd = 3, -->
+<!--       panel.first = grid(nx = NULL,  -->
+<!--                         ny = NULL,  -->
+<!--                         col = "lightgray",  -->
+<!--                         lty = "dotted",  -->
+<!--                         lwd = 2))  -->
+<!-- box(which = "plot",  -->
+<!--     lty = "solid",  -->
+<!--     lwd = 3) -->
+<!-- # The shaded area -->
+<!-- xshade <- seq(-3.5,0,length=200) -->
+<!-- pdfshade <- dnorm(xshade) -->
+<!-- polygon(c(-3.5,xshade,0),c(0,pdfshade,0), col="lightgray", lwd = 0.1) -->
+<!-- lines(x,pdf, -->
+<!--       lwd = 3, -->
+<!--       col="blue") -->
+<!-- # draw a plot of the N(0,1) CDF -->
+<!-- x <- seq(-3.5,3.5,length=200) -->
+<!-- cdf <- pnorm(x) -->
+<!-- plot(x,cdf, -->
+<!--       type = "l", -->
+<!--       cex.axis = 1.5,  -->
+<!--       cex.lab = 1.5,  -->
+<!--       xlim = c(-3.5, 3.5), -->
+<!--       ylab = "Probability", -->
+<!--       xlab = " ", -->
+<!--       col = "blue", -->
+<!--       lwd = 3, -->
+<!--       panel.first = grid(nx = NULL,  -->
+<!--                         ny = NULL,  -->
+<!--                         col = "lightgray",  -->
+<!--                         lty = "dotted",  -->
+<!--                         lwd = 2))  -->
+<!-- box(which = "plot",  -->
+<!--     lty = "solid",  -->
+<!--     lwd = 3) -->
+<!-- segments(0, -1, 0, pnorm(0), col = "black", lty = 2, lwd = 3) -->
+<!-- segments(-4, pnorm(0), 0, pnorm(0), col = "black", lty = 2, lwd = 3) -->
+<!-- ``` -->
 </section></section>
 <section><section id="summary" class="title-slide slide level1"><h1>Summary</h1></section><section id="summary-1" class="slide level2">
 <h2>Summary</h2>
 <ul>
+<li><p>A random process is a definite outcome that cannot be predicted with certainty</p></li>
 <li><p>A random variable assigns a number to a random outcome</p></li>
-<li><p>The probabilities with which a discrete random variable takes on different values are given by the PMF</p></li>
-<li><p>The probabilities with which a continuous random variable takes on different values are given by the PDF</p></li>
-<li><p>The CDF gives the probability that a random variable takes a value less than or equal to a specific value</p></li>
+<li><p>A random variable takes <strong>different values</strong> depending on the outcomes of the random process under study</p></li>
 </ul>
+<!-- - The probabilities with which a discrete random variable takes on different values are given by the PMF -->
+<!-- - The probabilities with which a continuous random variable takes on different values are given by the PDF -->
+<!-- - The CDF gives the probability that a random variable takes a value less than or equal to a specific value -->
 </section></section>
     </div>
   </div>
